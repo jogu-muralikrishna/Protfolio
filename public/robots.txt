@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://muralikrishna-aiml.dev/sitemap.xml
