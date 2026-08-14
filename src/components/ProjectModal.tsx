@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Github, ExternalLink, Cpu, CheckCircle2, AlertCircle, Layers, TrendingUp, Sparkles, Lightbulb } from 'lucide-react';
-import { Project } from '../types';
+import { Project, ProjectMetric } from '../types';
 
 interface ProjectModalProps {
   project: Project | null;
   onClose: () => void;
 }
 
-export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
+export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }: ProjectModalProps) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -81,7 +81,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             {/* Quick Action Links & Tags */}
             <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10">
               <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
+                {project.tags.map((tag: string) => (
                   <span
                     key={tag}
                     className="px-3 py-1 rounded-lg text-xs font-mono bg-white/5 border border-white/10 text-cyan-300"
@@ -159,7 +159,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   Key Features
                 </h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {project.keyFeatures.map((feat, i) => (
+                  {project.keyFeatures.map((feat: string, i: number) => (
                     <li key={i} className="flex items-start gap-2.5 p-3 rounded-xl bg-white/5 border border-white/10 text-sm text-slate-300">
                       <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 shrink-0" />
                       {feat}
@@ -177,7 +177,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   Architecture & Tech Stack
                 </h3>
                 <div className="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-2">
-                  {project.architecture.map((arch, i) => (
+                  {project.architecture.map((arch: string, i: number) => (
                     <p key={i} className="text-sm font-mono text-cyan-300 flex items-center gap-2">
                       <span className="text-purple-400">►</span> {arch}
                     </p>
@@ -194,7 +194,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   Impact & Performance Metrics
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  {project.metrics.map((m, i) => (
+                  {project.metrics.map((m: ProjectMetric, i: number) => (
                     <div key={i} className="p-4 rounded-2xl bg-blue-950/30 border border-blue-500/30 text-center">
                       <div className="text-2xl font-extrabold text-gradient">{m.value}</div>
                       <div className="text-xs font-mono text-slate-400 mt-1 uppercase">{m.label}</div>
@@ -212,7 +212,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   Roadmap & Future Improvements
                 </h3>
                 <ul className="space-y-2">
-                  {project.futureImprovements.map((item, i) => (
+                  {project.futureImprovements.map((item: string, i: number) => (
                     <li key={i} className="text-sm text-slate-300 font-mono flex items-center gap-2">
                       <span className="text-yellow-400">•</span> {item}
                     </li>
