@@ -65,7 +65,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // POST: Contact form submission
   if (req.method === 'POST') {
     try {
-      const { name, email, message, subject } = req.body || {};
+      const body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
+      const { name, email, message, subject } = body;
 
       if (!name || typeof name !== 'string' || name.trim() === '') {
         return res.status(400).json({ error: 'Name is required.' });
