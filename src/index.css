@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: #080d26;
+    color: #e2e8f0;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(8, 13, 38, 0.8);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(37, 99, 235, 0.4);
+    border-radius: 9999px;
+    border: 2px solid rgba(8, 13, 38, 0.8);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(6, 182, 212, 0.6);
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  .glass-card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card-hover:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(6, 182, 212, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 25px 50px -12px rgba(6, 182, 212, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #2563eb 0%, #9333ea 50%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, #67e8f9 0%, #38bdf8 50%, #818cf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .bg-hero-gradient {
+    background: linear-gradient(135deg, #2563eb 0%, #9333ea 50%, #06b6d4 100%);
+  }
+}
+
+/* Animations */
+@keyframes orbPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.08);
+  }
+}
+
+.animate-orb-pulse {
+  animation: orbPulse 4s ease-in-out infinite;
+}
+
+@keyframes floatBob {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float-0 {
+  animation: floatBob 3.5s ease-in-out infinite;
+  animation-delay: 0ms;
+}
+
+.animate-float-1 {
+  animation: floatBob 3.5s ease-in-out infinite;
+  animation-delay: 300ms;
+}
+
+.animate-float-2 {
+  animation: floatBob 3.5s ease-in-out infinite;
+  animation-delay: 700ms;
+}
+
+.animate-float-3 {
+  animation: floatBob 3.5s ease-in-out infinite;
+  animation-delay: 1000ms;
+}
